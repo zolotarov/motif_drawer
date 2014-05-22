@@ -17,7 +17,7 @@ python motif_drawer_standalone.py sequence_file.fas motif_list.txt
 
 A figure will be created named `sequence_file.png`.
 
-A sequence file must be in FASTA format and the list of motifs has to have one motif using only ACGT in capitals, e.g.:
+A sequence file must be in FASTA format and the list of motifs has to have one motif per line, using only ACGT in capitals, e.g.:
 
 ```
 TTAATT
@@ -28,3 +28,7 @@ TTGTAA
 AAAAAA
 TATATA
 ```
+
+## Server version
+
+To be added.
