@@ -1,6 +1,6 @@
 *.ipynb
 *.pyc
-test.fas
+*.fas
 motifs.txt
 *.png
 *.svg
