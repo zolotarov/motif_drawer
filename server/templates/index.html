@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png"> -->
+
+    <title>motif drawer server</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="navbar-static-top.css" rel="stylesheet"> -->
+
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-pencil" style="vertical-align:middle"></span>  motif drawer</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="#help">Help</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="jumbotron">
+        <h2>Draw motifs positions in DNA sequences</h2>
+        <p>
+        <form class="form-group" role="form" method="POST">
+          <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+                  <label for="sequences">Sequences</label>
+                  <textarea class="form-control" style="font-family:monospace; resize:none;" rows="10" placeholder="Enter sequences in FASTA format" name="sequences"></textarea>
+                </div>
+                <div class="col-xs-6">
+                  <label for="motifs">Motifs</label>
+                  <textarea class="form-control" style="font-family:monospace; resize:none;" rows="10" placeholder="Enter motif sequences" name="motifs"></textarea>
+                </div>
+              </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-align-right" style="vertical-align:top"></span> Draw motifs</button>
+        </form>
+          <!-- <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a> -->
+        </p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -31,4 +31,4 @@ TATATA
 
 ## Server version
 
-To be added.
+To start the motif drawer server for personal use, go into `server` directory and type `python app.py`. You can now direct your browser to `http://0.0.0.0:5000/` and paste your sequences and motifs in the text boxes.
