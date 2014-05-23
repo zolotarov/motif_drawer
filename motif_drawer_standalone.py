@@ -65,7 +65,7 @@ motifs_revcomp_dict = remove_empty_motifs(motifs_revcomp_dict)
 
 # setup the plot figure, here the size of the output can be changed
 fig = plt.figure(1, figsize=[15, 9], facecolor='w', edgecolor='k',
-                 frameon=False)
+                 frameon=True)
 ax = fig.add_subplot(111)
 
 # the axes depend on the maximum sequence length (x)
