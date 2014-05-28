@@ -134,6 +134,7 @@ handles, labels = plt.gca().get_legend_handles_labels()
 by_label = OrderedDict(zip(labels, handles))
 plt.legend(by_label.values(), by_label.keys(), loc='upper center',
            ncol=5, scatterpoints=1, scatteryoffsets=[0.65]*len(motifs))
+plt.tight_layout() # automatically adjust the plot size to fit all
 plt.savefig(figure_output_name, format="png")
 print "Saved the figure in %s" % figure_output_name
 # plt.show()
