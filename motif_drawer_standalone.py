@@ -34,7 +34,8 @@ def rev_comp(sequence):
 
 count = 0
 for seq in sequences:
-    seq_info.append({'length': len(str(seq.seq)), 'id': str(seq.id),
+    id = str(seq.id).split('|')[0].split(';')[0]
+    seq_info.append({'length': len(str(seq.seq)), 'id': id,
                      'number': count})
     count += 1
     for motif in motifs:
@@ -66,6 +67,8 @@ motifs_revcomp_dict = remove_empty_motifs(motifs_revcomp_dict)
 # setup the plot figure, here the size of the output can be changed
 fig = plt.figure(1, figsize=[15, 9], facecolor='w', edgecolor='k',
                  frameon=True)
+fig.subplots_adjust(left=None, bottom=None, right=None, top=None, 
+                            wspace=None, hspace=None)
 ax = fig.add_subplot(111)
 
 # the axes depend on the maximum sequence length (x)

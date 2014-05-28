@@ -39,7 +39,8 @@ def index():
 
         count = 0
         for seq in sequences:
-            seq_info.append({'length': len(str(seq.seq)), 'id': str(seq.id),
+            id = str(seq.id).split('|')[0].split(';')[0]
+            seq_info.append({'length': len(str(seq.seq)), 'id': id,
                              'number': count})
             count += 1
             for motif in motifs:
@@ -69,8 +70,11 @@ def index():
         motifs_revcomp_dict = remove_empty_motifs(motifs_revcomp_dict)
 
         # setup the plot figure, here the size of the output can be changed
-        fig = plt.figure(1, figsize=[15, 10], facecolor='w', edgecolor='k',
+        fig = plt.figure(1, figsize=[17, 10], facecolor='w', edgecolor='k',
                          frameon=True)
+        fig.subplots_adjust(left=None, bottom=None, right=None, top=None, 
+                            wspace=None, hspace=None)
+
         ax = fig.add_subplot(111)
 
         # the axes depend on the maximum sequence length (x)
@@ -99,7 +103,8 @@ def index():
         # of the sequences
         plt.yticks(range(1, number_of_lines+1), [seq['id'] for seq in seq_info])
 
-        # invert the x axis so that it goes from a negative number to 0 on the right
+        # invert the x axis so that it goes from a negative number to 0 on 
+        # the right
         plt.gca().invert_xaxis()
 
 
@@ -112,9 +117,9 @@ def index():
 
 
         def draw_motifs(motif, line_number, locations, color, marker):
-            plt.scatter(locations, [line_number+1]*len(locations), s=150, c=color,
-                        marker=marker, alpha=1, edgecolors='k', linewidth=0.3,
-                        label=motif)
+            plt.scatter(locations, [line_number+1]*len(locations), s=150, 
+                        c=color, marker=marker, alpha=1, edgecolors='k',
+                        linewidth=0.3, label=motif)
 
 
         colors = {0: '#99A0A9', 1: '#FF6B6B', 2: '#C7F464', 3: '#a79d88',
@@ -126,10 +131,12 @@ def index():
 
         for motif in motifs_revcomp_dict:
             for m in enumerate(motifs_revcomp_dict[motif]):
-                draw_motifs(motif, m[0], m[1], colors[motif_numbers[motif]], "<")
+                draw_motifs(motif, m[0], m[1], colors[motif_numbers[motif]], 
+                            "<")
         for motif in motifs_dict:
             for m in enumerate(motifs_dict[motif]):
-                draw_motifs(motif, m[0], m[1], colors[motif_numbers[motif]], ">")
+                draw_motifs(motif, m[0], m[1], colors[motif_numbers[motif]],
+                            ">")
 
         plt.xlabel('Distance from start codon')
         handles, labels = plt.gca().get_legend_handles_labels()
@@ -140,33 +147,12 @@ def index():
         plt.savefig('%s.png' % figure_output_name, format="png")
         plt.close(fig)
         
-        return render_template('results.html', image_svg = '%s.svg' % figure_output_name, image_png = '%s.png' % figure_output_name)
+        return render_template('results.html', image_svg = 
+                               '%s.svg' % figure_output_name, 
+                               image_png = '%s.png' % figure_output_name)
     else:
         return render_template('index.html')
 
-# @app.route('/cog/id/<int:cog_id>')
-# def cog_query(cog_id):
-#   return "Results for COG %d" % cog_id
-
-# @app.route('/results', methods=['POST', 'GET'], sequences=sequences, motifs=motifs)
-# def draw_motifs(sequences, motifs):
-#   # if request.method == "POST":
-#   #   gene = request.form["gene_name"]
-#   #   return redirect("/gene/id/%s" % gene)
-#   # else:
-#   #   engine = create_engine('sqlite:///database/orthomotif_main.db')
-#   #   conn = engine.connect()
-#   #   cog_id_query = conn.execute("SELECT COG_ID FROM ORTHOLOGS WHERE GENE='%s'" % gene_id)
-#   #   cog_id = [i for i in cog_id_query][0][0]
-#   #   results = conn.execute("SELECT * FROM ORTHOLOGS WHERE COG_ID=%d" % cog_id)
-#   #   rows = results.fetchall()
-#   #   length = len(rows)
-#   #   return render_template('results.html', gene_id = gene_id, results = rows, length = length)
-#   return sequences, '\n', motifs
-
-# with app.test_request_context():
-#   print url_for('cog_query', cog_id=10)
-#   print url_for('gene_query', gene_id='AT5G86894')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
