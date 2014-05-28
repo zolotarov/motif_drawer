@@ -143,6 +143,7 @@ def index():
         by_label = OrderedDict(zip(labels, handles))
         plt.legend(by_label.values(), by_label.keys(), loc='upper center',
                    ncol=5, scatterpoints=1, scatteryoffsets=[0.65]*len(motifs))
+        plt.tight_layout() # automatically adjust the plot size to fit all
         plt.savefig('%s.svg' % figure_output_name, format="svg")
         plt.savefig('%s.png' % figure_output_name, format="png")
         plt.close(fig)
