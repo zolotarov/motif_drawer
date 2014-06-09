@@ -1,4 +1,4 @@
-from motif_drawer_temp import *
+from motif_drawer import *
 
 app = Flask(__name__)
 app.config.from_object('config')
