@@ -12,7 +12,7 @@ Example chart showing positions of 6 different motifs in 7 promoters:
 
 To use the command line version of motif drawer type the following command:
 ```bash
-python motif_drawer_standalone.py sequence_file.fas motif_list.txt
+python motif_drawer_cli.py sequence_file.fas motif_list.txt
 ```
 
 A figure will be created named `sequence_file.png`.
@@ -31,4 +31,4 @@ TATATA
 
 ## Server version
 
-To start the motif drawer server for personal use, go into `server` directory and type `python app.py`. You can now direct your browser to `http://0.0.0.0:5000/` and paste your sequences and motifs in the text boxes.
+To start the motif drawer server for personal use, type `python app.py`. You can now direct your browser to `http://0.0.0.0:5000/` and paste your sequences and motifs in the text boxes.
